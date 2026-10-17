@@ -1,0 +1,17 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "Kf7qhk8z2JiKrWQSr1gtb"
+uri = "file://.local/conversation-workspace/files/deliverables/%D9%83%D8%AA%D8%A7%D8%A8_%D8%A7%D9%84%D8%AA%D8%AD%D9%84%D9%8A%D9%84_%D8%A7%D9%84%D9%83%D9%8A%D9%85%D9%8A%D8%A7%D8%A6%D9%8A_%D8%A7%D9%84%D9%88%D8%B5%D9%81%D9%8A_UNV.html"
+type = "html"
+title = "كتاب التحليل الكيميائي الوصفي — UNV"
+description = "كتاب عربي تفاعلي شامل: ستة فصول، محاكاة مختبرية، مخططات، بنك أسئلة محلول، بحث واختبار ذاتي."
+logical_id = "04a1a500-01fe-4a9a-b1a5-72b58cf5dba1"
+content_hash = "sha256:1bd3823c54ee0483420b0caf791619d3e08779fe62fb30a433f29dcd255bbe26"
+size = 83129
+mtime_ms = 1792197943396
+storage_uri = "gcs://replit-rams-assets-worf/rams/assets/conversation:fd776254-26e2-4796-b7f8-0b8c7985ba35/04a1a500-01fe-4a9a-b1a5-72b58cf5dba1/18a58e06-26a6-483a-85e8-aeacb9d30142"
+storage_version_token = "1792197944111745"
+content_type = "text/html"
+source_uri = "file://deliverables/%D9%83%D8%AA%D8%A7%D8%A8_%D8%A7%D9%84%D8%AA%D8%AD%D9%84%D9%8A%D9%84_%D8%A7%D9%84%D9%83%D9%8A%D9%85%D9%8A%D8%A7%D8%A6%D9%8A_%D8%A7%D9%84%D9%88%D8%B5%D9%81%D9%8A_UNV.html"

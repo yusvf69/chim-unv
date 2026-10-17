@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "التحليل الكيميائي الوصفي — UNV"
+description = "موقع تعليمي تفاعلي لطلاب الثانوية يشرح التحليل الكيميائي الوصفي عبر محاكاة تجارب آمنة، رسومات تفاعلية، بنك أسئلة محلول، واختبارات قصيرة."
+version = "1.0.0"
+id = "artifacts/qualitative-chemistry"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22346
+
+[services.development]
+run = "pnpm --filter @workspace/qualitative-chemistry run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/qualitative-chemistry", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/qualitative-chemistry/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22346"
+BASE_PATH = "/"
