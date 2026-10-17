@@ -305,7 +305,7 @@ function Workshop() {
   const displayIon = scenarioId === 'chloride' ? 'الكلوريد' : scenarioId === 'nitrate' ? 'النترات' : scenarioId === 'phosphate' ? 'الفوسفات' : 'الكبريتات';
   return <section className="destination-section" id="workshop" data-testid="section-workshop">
     <div className="workshop-section">
-      <div className="workshop-head"><div className="destination-heading"><span className="destination-mark"><Microscope size={23}/></span><div><span className="eyebrow">محاكاة مخبرية تفاعلية · اسحب إلى الموضع الصحيح</span><h2>ورشة الإحساس العملي</h2><p>كل خطوة تتطلب جسمًا ماديًا ومكانًا محددًا على جهاز التجربة.</p></div></div><span className="workshop-badge">محاكاة تعليمية — لا توجد مواد حقيقية</span></div>
+      <div className="workshop-head"><div className="destination-heading"><span className="destination-mark"><Microscope size={23}/></span><div><span className="eyebrow">محاكاة مخبرية تفاعلية</span><h2>ورشة الإحساس العملي</h2><p></p></div></div><span className="workshop-badge">محاكاة تعليمية — لا توجد مواد حقيقية</span></div>
       <div className="scenario-tabs" aria-label="قائمة التجارب">{workshopScenarios.map((entry) => <button key={entry.id} className={entry.id === scenarioId ? 'selected' : ''} onClick={() => selectExperiment(entry.id)} aria-pressed={entry.id === scenarioId} data-testid={`experiment-${entry.id}`}>{entry.title}</button>)}</div>
       <p className="sim-intro">{scenario.note}</p>
       <div className="experiment-subheads"><span>الكشف عن {displayIon}</span><span>التجربة التأكيدية لـ {displayIon}</span></div>
@@ -333,7 +333,7 @@ function Workshop() {
           <div className="vessel-note" aria-live="polite" data-testid="text-workshop-observation">{complete ? scenario.final : previous?.stage || 'الأجهزة جاهزة؛ ابدأ بالخطوة الأولى.'}</div>
         </div>
         <div className="tool-panel">
-          <h3>الأجسام والكواشف</h3><p>{selected ? `حدد «${toolLabels[selected]}»؛ اختر موضع الجهاز المناسب.` : 'اسحب جسمًا إلى موضعه، أو المس الجسم ثم موضع الإسقاط. الجسم وحده لا يكفي.'}</p>
+          <h3>الأجسام والكواشف</h3><p>{selected ? `حدد «${toolLabels[selected]}»؛ اختر موضع الجهاز المناسب.` : ''}</p>
           <div className="tool-tray">{scenario.tools.map((tool) => <button key={tool} className={`tool-token ${selected === tool ? 'selected' : ''}`} draggable={!complete} onDragStart={(event) => event.dataTransfer.setData('text/plain',tool)} onClick={() => setSelected((value) => value === tool ? null : tool)} aria-pressed={selected === tool} data-testid={`draggable-${scenario.id}-${tool}`}><span>{tool === 'agno3' || tool === 'barium' || tool === 'lead' ? <Beaker size={15}/> : tool === 'sulfuric' || tool === 'hcl' || tool === 'nitric' ? <FlaskConical size={15}/> : <TestTube2 size={15}/>}</span>{toolLabels[tool]}</button>)}</div>
           <div className="workshop-controls">
             <button className="button button-quiet" onClick={() => setHint((value) => Math.min(value+1,2))} disabled={complete} data-testid="button-hint"><Lightbulb size={15}/> تلميح {hint}/٢</button>
