@@ -333,7 +333,7 @@ function Workshop() {
           <div className="vessel-note" aria-live="polite" data-testid="text-workshop-observation">{complete ? scenario.final : previous?.stage || 'الأجهزة جاهزة؛ ابدأ بالخطوة الأولى.'}</div>
         </div>
         <div className="tool-panel">
-          <h3>الأجسام والكواشف</h3><p>{selected ? `حدد «${toolLabels[selected]}»؛ اختر موضع الجهاز المناسب.` : ''}</p>
+          <h3>الأجسام والكواشف</h3><p>{selected ? `حدد «${toolLabels[selected]}»؛ اختر موضع الجهاز المناسب.` : 'اختر الأداة المطلوبة من هذه الصينية، ثم المس موضعها على الجهاز. متابعة الخطوات بالترتيب.'}</p>
           <div className="tool-tray">{scenario.tools.map((tool) => <button key={tool} className={`tool-token ${selected === tool ? 'selected' : ''}`} draggable={!complete} onDragStart={(event) => event.dataTransfer.setData('text/plain',tool)} onClick={() => setSelected((value) => value === tool ? null : tool)} aria-pressed={selected === tool} data-testid={`draggable-${scenario.id}-${tool}`}><span>{tool === 'agno3' || tool === 'barium' || tool === 'lead' ? <Beaker size={15}/> : tool === 'sulfuric' || tool === 'hcl' || tool === 'nitric' ? <FlaskConical size={15}/> : <TestTube2 size={15}/>}</span>{toolLabels[tool]}</button>)}</div>
           <div className="workshop-controls">
             <button className="button button-quiet" onClick={() => setHint((value) => Math.min(value+1,2))} disabled={complete} data-testid="button-hint"><Lightbulb size={15}/> تلميح {hint}/٢</button>
