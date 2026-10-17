@@ -393,6 +393,11 @@ td .latin { color:#24495a; }.table-scroll .latin { white-space:normal; }
   .home-credit { flex-wrap:wrap; }
   .home-credit > span:last-child { width:100%; margin:0; }
   .experiment-subheads { grid-template-columns:1fr; }
+  .tool-token { min-height:48px; font-size:11px; touch-action:manipulation; }
+  .apparatus-location { min-height:150px; touch-action:manipulation; padding:11px; }
+  .apparatus-location .location-label { font-size:10px; }
+  .workshop-controls .button { min-height:44px; font-size:12px; }
+  .scenario-tabs button { min-height:40px; font-size:11px; }
   .apparatus-shelf { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .apparatus-location { min-height:145px; }
   .workshop-section { padding:13px; }

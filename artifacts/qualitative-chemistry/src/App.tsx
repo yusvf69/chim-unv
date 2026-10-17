@@ -92,6 +92,10 @@ const toolLabels: Record<string, string> = {
   solid: 'ملح كلوريد صلب', chlorideSolution: 'محلول العينة', glassrod: 'ساق مبللة بالنشادر',
   nitrateSolution: 'محلول النترات', phosphateSolution: 'محلول الفوسفات', sulfateSolution: 'محلول الكبريتات',
   nitric: 'حمض النيتريك المخفف', lead: 'أسيتات الرصاص', water: 'ماء مقطر',
+  bromideSolid: 'ملح بروميد صلب', iodideSolid: 'ملح يوديد صلب', carbonateSolid: 'ملح كربونات صلب',
+  sulfiteSolid: 'ملح كبريتيت صلب', sulfideSolid: 'ملح كبريتيد صلب', thiosulfateSolid: 'ملح ثيوكبريتات صلب',
+  nitriteSolid: 'ملح نيتريت صلب', starch: 'محلول النشا', limewater: 'ماء الجير',
+  dichromatePaper: 'ورقة ثنائي الكرومات المحمضة', copper: 'قطعة نحاس',
 };
 const workshopScenarios: WorkshopScenario[] = [
   {
@@ -139,6 +143,87 @@ const workshopScenarios: WorkshopScenario[] = [
       {item:'sulfateSolution',target:'confirm-tube',title:'التجربة التأكيدية · خذ محلولًا جديدًا',observation:'أُعدّت عينة منفصلة لاختبار الرصاص.',explanation:'يُجرى التأكيد على جزء جديد من المحلول لتجنب خلط المسارين.',color:'#dcebe7',stage:'عينة جديدة للتأكيد',hint:'انتقل إلى أنبوبة التأكيد بمحلول جديد.',},
       {item:'lead',target:'confirm-tube',title:'أضف أسيتات الرصاص',observation:'تكوّن راسب أبيض من PbSO₄.',explanation:'يتحد الرصاص الثنائي مع الكبريتات مكونًا كبريتات الرصاص البيضاء غير الذائبة.',color:'#eee9d9',stage:'راسب PbSO₄ أبيض',hint:'أسيتات الرصاص تضاف إلى المحلول الجديد.',},
     ],safety:'محاكاة تعليمية فقط. أملاح الرصاص سامة ويجب عدم لمسها أو التخلص منها خارج بروتوكول مختبر مدرسي.',final:'النتيجة: BaSO₄ الأبيض لا يذوب في HCl المخفف، ويتأكد SO₄²⁻ بترسيب PbSO₄ الأبيض.'
+  },
+  {
+    id:'bromide',title:'الكشف عن أيون البروميد',note:'الحلقة: أبخرة بروم برتقالية محمرة، ثم تأكيد بفضة ذائبة ببطء في النشادر.',sample:'ملح بروميد صلب + H₂SO₄ مركز؛ تأكيد AgNO₃',
+    tools:['bromideSolid','sulfuric','starch','agno3','ammonia'],
+    targets:[{id:'tube',label:'أنبوبة الاختبار',apparatus:'أنبوبة الاختبار'}],
+    steps:[
+      {item:'bromideSolid',target:'tube',title:'ضع ملح البروميد',observation:'الملح في أنبوبة الاختبار.',explanation:'نبدأ بملح صلب جاف لاختبار الحمض المركز.',color:'#dcebe7',stage:'ملح بروميد في الأنبوبة',hint:'ابدأ بوضع الملح الصلب.'},
+      {item:'sulfuric',target:'tube',title:'أضف H₂SO₄ المركز (محاكاة)',observation:'يتصاعد بخار Br₂ برتقالي محمر.',explanation:'يتكون HBr ثم يتأكسد جزئيًا بخاريًا إلى Br₂.',color:'#efc9a8',stage:'بخار بروم برتقالي محمر',hint:'الحمض المركز يضاف إلى الملح الصلب.'},
+      {item:'starch',target:'tube',title:'اختبر البخار بالنشا',observation:'اصفرّ ورقة النشا.',explanation:'البروم يصفرّ ورقة النشا؛ علامة مميزة لبروم.',color:'#efdcae',stage:'ورقة نشا مصفرة',hint:'النشا يضاف إلى بخار البروم.'},
+      {item:'agno3',target:'tube',title:'خذ محلولًا جديدًا وأضف AgNO₃',observation:'تكوّن راسب AgBr كريمي مائل للأصفر.',explanation:'بروميد الفضة كريمي، ويغمق بالضوء.',color:'#e5daaf',stage:'راسب AgBr كريمي',hint:'نترات الفضة على محلول جديد.'},
+      {item:'ammonia',target:'tube',title:'اختبر الذوبان بالنشادر',observation:'ذاب الراسب ببطء في NH₃ المركز.',explanation:'ذوبان AgBr بطيء يميزه عن AgCl السريع وAgI الذي لا يذوب.',color:'#d8eee4',stage:'AgBr ذاب ببطء',hint:'النشادر تُضاف ببطء على الراسب.'},
+    ],safety:'محاكاة تعليمية فقط؛ أبخرة البروم مهيجة ولا تنفّذ خارج مختبر مجهز.',final:'النتيجة: بخار برتقالي محمر مع نشا أصفر، ثم AgBr كريمي يذوب ببطء في النشادر = Br⁻.'
+  },
+  {
+    id:'iodide',title:'الكشف عن أيون اليوديد',note:'بخار يود بنفسجي يزرّق النشا؛ راسب AgI أصفر لا يذوب في النشادر.',sample:'ملح يوديد صلب + H₂SO₄ مركز؛ تأكيد AgNO₃',
+    tools:['iodideSolid','sulfuric','starch','agno3'],
+    targets:[{id:'tube',label:'أنبوبة الاختبار',apparatus:'أنبوبة الاختبار'}],
+    steps:[
+      {item:'iodideSolid',target:'tube',title:'ضع ملح اليوديد',observation:'الملح في أنبوبة الاختبار.',explanation:'اختبار الغاز يبدأ بملح صلب.',color:'#dcebe7',stage:'ملح يوديد في الأنبوبة',hint:'ابدأ بوضع الملح الصلب.'},
+      {item:'sulfuric',target:'tube',title:'أضف H₂SO₄ المركز (محاكاة)',observation:'تتكون أبخرة I₂ بنفسجية.',explanation:'يتكون HI ثم يتأكسد سريعًا إلى بخار اليود.',color:'#ded3e7',stage:'بخار يود بنفسجي',hint:'الحمض المركز يضاف إلى الملح الصلب.'},
+      {item:'starch',target:'tube',title:'اختبر البخار بالنشا',observation:'ازرّقت ورقة النشا.',explanation:'اليود يعطي معقّدًا أزرق مع النشا.',color:'#cfdae8',stage:'ورقة نشا زرقاء',hint:'النشا يكشف بخار اليود.'},
+      {item:'agno3',target:'tube',title:'خذ محلولًا جديدًا وأضف AgNO₃',observation:'تكوّن راسب AgI أصفر.',explanation:'يوديد الفضة أصفر، ونقطة تمييزه عن Ag₃PO₄ هو عدم الذوبان في النشادر.',color:'#e3d279',stage:'راسب AgI أصفر',hint:'نترات الفضة على محلول جديد.'},
+    ],safety:'محاكاة تعليمية فقط؛ أبخرة اليود مهيجة، لا تعمّل خارج المختبر.',final:'النتيجة: بخار بنفسجي مع نشا أزرق، ثم AgI أصفر لا يذوب في النشادر = I⁻.'
+  },
+  {
+    id:'carbonate',title:'الكشف عن الكربونات',note:'اختبار الحمض المخفف: CO₂ يعكّر ماء الجير.',sample:'ملح كربونات + HCl المخفف + ماء الجير',
+    tools:['carbonateSolid','hcl','limewater'],
+    targets:[{id:'tube',label:'أنبوبة الاختبار',apparatus:'أنبوبة الاختبار'}],
+    steps:[
+      {item:'carbonateSolid',target:'tube',title:'ضع ملح الكربونات',observation:'الملح في أنبوبة الاختبار.',explanation:'لدينا ملح من حمض ضعيف الثبات؛ الحمض المخفف يكشفه.',color:'#dcebe7',stage:'ملح كربونات في الأنبوبة',hint:'ابدأ بوضع الملح الصلب.'},
+      {item:'hcl',target:'tube',title:'أضف HCl المخفف',observation:'انطلقت فقاعات غاز CO₂.',explanation:'حمض كربونيك غير ثابت يتحلل إلى CO₂ وماء.',color:'#dcebe7',stage:'تصاعد CO₂',hint:'الحمض المخفف يوضع على الملح.'},
+      {item:'limewater',target:'tube',title:'مرّر الغاز في ماء الجير',observation:'تعكّر ماء الجير تدريجيًا.',explanation:'CO₂ يتحد مع ماء الجير مكونًا كربونات الكالسيوم المعكّرة.',color:'#eef1e8',stage:'ماء الجير معكّر',hint:'ماء الجير الجديد يكشف الغاز.'},
+    ],safety:'محاكاة تعليمية آمنة؛ لا حاجة لأي كواشف حقيقية.',final:'النتيجة: فقاعات مع الحمض المخفف + عكارة ماء الجير = CO₃²⁻.'
+  },
+  {
+    id:'sulfite',title:'الكشف عن الكبريتيت',note:'غاز SO₂ مختزل؛ يخضّر ثنائي الكرومات المحمضة.',sample:'ملح كبريتيت + HCl المخفف + ورقة ثنائي الكرومات',
+    tools:['sulfiteSolid','hcl','dichromatePaper'],
+    targets:[{id:'tube',label:'أنبوبة الاختبار',apparatus:'أنبوبة الاختبار'}],
+    steps:[
+      {item:'sulfiteSolid',target:'tube',title:'ضع ملح الكبريتيت',observation:'الملح في أنبوبة الاختبار.',explanation:'كبريتوز غير ثابت؛ ينطلق SO₂ مع الحمض المخفف.',color:'#dcebe7',stage:'ملح كبريتيت في الأنبوبة',hint:'ابدأ بوضع الملح الصلب.'},
+      {item:'hcl',target:'tube',title:'أضف HCl المخفف',observation:'تصاعد غاز نفاذ الرائحة SO₂.',explanation:'SO₂ غاز مختزل وريحته صارخة.',color:'#dcebe7',stage:'تصاعد SO₂',hint:'الحمض المخفف يطلق الغاز.'},
+      {item:'dichromatePaper',target:'tube',title:'قرّب ورقة ثنائي الكرومات المحمضة',observation:'تحول الورقة من البرتقالي إلى الأخضر.',explanation:'SO₂ يختزل Cr₂O₇²⁻ إلى Cr³⁺ الأخضر.',color:'#cfe3cf',stage:'ورقة كرومات خضراء',hint:'ورقة الكرومات المحمضة كاشف الاختزال.'},
+    ],safety:'محاكاة تعليمية؛ SO₂ مهيج للتنفس ولا يُستنشق أبخرة خارج المختبر.',final:'النتيجة: SO₂ مع الحمض المخفف وتحويل الكرومات للأخضر = SO₃²⁻.'
+  },
+  {
+    id:'sulfide',title:'الكشف عن الكبريتيد',note:'غاز H₂S كريه الرائحة؛ يسوّد ورقة أسيتات الرصاص.',sample:'ملح كبريتيد + HCl المخفف + ورقة أسيتات الرصاص',
+    tools:['sulfideSolid','hcl','lead'],
+    targets:[{id:'tube',label:'أنبوبة الاختبار',apparatus:'أنبوبة الاختبار'}],
+    steps:[
+      {item:'sulfideSolid',target:'tube',title:'ضع ملح الكبريتيد',observation:'الملح في أنبوبة الاختبار.',explanation:'حمض كبريتيدريك غير ثابت؛ يطلق H₂S مع الحمض.',color:'#dcebe7',stage:'ملح كبريتيد في الأنبوبة',hint:'ابدأ بوضع الملح الصلب.'},
+      {item:'hcl',target:'tube',title:'أضف HCl المخفف',observation:'انطلق غاز كريه الرائحة H₂S.',explanation:'رائحة البيض الفاسد هي علامة H₂S.',color:'#dcebe7',stage:'تصاعد H₂S',hint:'الحمض المخفف يطلق الغاز.'},
+      {item:'lead',target:'tube',title:'قرّب ورقة أسيتات الرصاص',observation:'مسوّدت ورقة أسيتات الرصاص.',explanation:'H₂S يعطي PbS الأسود سوادًا فوريًا.',color:'#3f4446',stage:'ورقة رصاص مسوّدة',hint:'ورقة الرصاص تكشف H₂S بلون اسود.'},
+    ],safety:'محاكاة تعليمية؛ H₂S سام ولا يُستنشق أبخرة خارج المختبر مجهز.',final:'النتيجة: H₂S رائحته كريهة وبعد الورقة أسود فوري = S²⁻.'
+  },
+  {
+    id:'thiosulfate',title:'الكشف عن الثيوكبريتات',note:'SO₂ مع راسب كبريت أصفر، وAg₂SO₃ أبيض يسود بالتسخين.',sample:'ملح ثيوكبريتات + HCl المخفف',
+    tools:['thiosulfateSolid','hcl'],
+    targets:[{id:'tube',label:'أنبوبة الاختبار',apparatus:'أنبوبة الاختبار'}],
+    steps:[
+      {item:'thiosulfateSolid',target:'tube',title:'ضع ملح الثيوكبريتات',observation:'الملح في أنبوبة الاختبار.',explanation:'حمض الثيوكبريتيك غير ثابت أساسًا: يتفتت على SO₂ وكبريت.',color:'#dcebe7',stage:'ملح ثيوكبريتات في الأنبوبة',hint:'ابدأ بوضع الملح الصلب.'},
+      {item:'hcl',target:'tube',title:'أضف HCl المخفف',observation:'تعكّر السائل بمعجون كبريتي أصفر مع تصاعد SO₂.',explanation:'S₂O₃²⁻ + 2H⁺ → SO₂ + S↓ أصفر + ماء.',color:'#eee9b8',stage:'معلق كبريتي أصفر',hint:'الحمض المخفف يفتت الثيوكبريتات.'},
+    ],safety:'محاكاة تعليمية فقط.',final:'النتيجة: معلق كبريتي أصفر مع SO₂، وAg₂SO₃ أبيض يسود بالتسخين = S₂O₃²⁻.'
+  },
+  {
+    id:'nitrite',title:'الكشف عن النيتريت',note:'حمض نيتروز غير ثابت؛ أكاسيد نيتروجين بنية مع الحمض المخفف.',sample:'ملح نيتريت + HCl المخفف',
+    tools:['nitriteSolid','hcl'],
+    targets:[{id:'tube',label:'أنبوبة الاختبار',apparatus:'أنبوبة الاختبار'}],
+    steps:[
+      {item:'nitriteSolid',target:'tube',title:'ضع ملح النيتريت',observation:'الملح في أنبوبة الاختبار.',explanation:'حمض النيتروز يتفكك بعد تكوينه.',color:'#dcebe7',stage:'ملح نيتريت في الأنبوبة',hint:'ابدأ بوضع الملح الصلب.'},
+      {item:'hcl',target:'tube',title:'أضف HCl المخفف',observation:'تصاعد أبخرة بنية من أكاسيد النيتروجين.',explanation:'HNO₂ يتفكك إلى NO وNO₂ وماء؛ اللون البني من NO₂.',color:'#e8dccc',stage:'أبخرة بنية',hint:'الحمض المخفف يفكك النيتريت.'},
+    ],safety:'محاكاة تعليمية؛ أكاسيد النيتروجين خانقة ولا تُستنشق.',final:'النتيجة: HNO₂ غير ثابت وأبخرة بنية خفيفة = NO₂⁻.'
+  },
+  {
+    id:'nitrateConfirm',title:'حلقة النترات البنية',note:'FeSO₄ حديث + طبقة الحمض المركز تعطي حلقة بنية عند الحد الفاصل.',sample:'محلول نترات + FeSO₄ + H₂SO₄ مركز',
+    tools:['nitrateSolution','feso4','sulfuric'],
+    targets:[{id:'tube',label:'أنبوبة الاختبار',apparatus:'أنبوبة الاختبار'}],
+    steps:[
+      {item:'nitrateSolution',target:'tube',title:'ضع محلول النترات',observation:'المحلول في أنبوبة الاختبار.',explanation:'اختبار الحلقة يبدأ بمحلول العينة.',color:'#dcebe7',stage:'محلول نترات',hint:'ابدأ بمحلول العينة.'},
+      {item:'feso4',target:'tube',title:'أضف FeSO₄ الحديث',observation:'دمج Fe²⁺ مع المحلول.',explanation:'Fe²⁺ يبنى معقدي النيتروسيل أثناء الحمض.',color:'#e5dfc9',stage:'FeSO₄ في المحلول',hint:'FeSO₄ حديث التحضير قبل الحمض.'},
+      {item:'sulfuric',target:'tube',title:'أضف طبقة H₂SO₄ المركز على الجدار',observation:'ظهرت حلقة بنية عند الحد الفاصل.',explanation:'معقد النيتروسيل الحديدي يتراكم بين طبقتي السائل.',color:'#9a5637',stage:'حلقة بنية',hint:'طبقة الحمض على الجدار بدون رج.'},
+    ],safety:'محاكاة تعليمية؛ الحمض المركز شديد التآكل ولا تُنفّذ التجربة خارج المختبر.',final:'النتيجة: حلقة بنية عند الحد الفاصل = NO₃⁻.'
   },
 ];
 
@@ -316,7 +401,7 @@ function Workshop() {
           <div className="apparatus-shelf">{scenario.targets.map((target,index) => {
             const hasItem = added.some((entry) => entry.startsWith(`${target.id}:`));
             const isCurrent = current?.target === target.id;
-            return <div className={`apparatus-location ${isCurrent ? 'is-active' : ''} ${hasItem ? 'has-content' : ''}`} key={target.id} role="button" tabIndex={0} onClick={() => selected && place(selected,target.id)} onKeyDown={(event) => { if (selected && (event.key === 'Enter' || event.key === ' ')) place(selected,target.id); }} onDragOver={(event) => event.preventDefault()} onDrop={(event) => {event.preventDefault();const dragged=event.dataTransfer.getData('text/plain') || selected;if(dragged)place(dragged,target.id);}} data-testid={`drop-location-${target.id}`}>
+            return <div className={`apparatus-location ${isCurrent ? 'is-active' : ''} ${hasItem ? 'has-content' : ''}`} key={target.id} role="button" tabIndex={0} onClick={() => { if (selected) place(selected, target.id); else if (current) setFeedback({ ok: false, text: `المطلوب الآن «${toolLabels[current.item]}» في «${scenario.targets.find((entry) => entry.id === current.target)?.label}». اختَر الأداة من الصينية أولًا.` }); }} onKeyDown={(event) => { if (selected && (event.key === 'Enter' || event.key === ' ')) place(selected, target.id); }} onDragOver={(event) => event.preventDefault()} onDrop={(event) => {event.preventDefault();const dragged=event.dataTransfer.getData('text/plain') || selected;if(dragged)place(dragged,target.id);}} data-testid={`drop-location-${target.id}`}>
               <span className="location-label">{target.label}</span>
               <svg viewBox="0 0 120 130" role="img" aria-label={`${target.apparatus}: ${hasItem ? (previous?.stage || 'تغيرت محتويات الجهاز') : 'فارغ'}`}>
                 <path d="M33 12h54M39 13v70a21 21 0 0 0 42 0V13" fill="rgba(222,240,234,.62)" stroke="#658e88" strokeWidth="3" strokeLinecap="round"/>
